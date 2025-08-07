@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('url');
-            $table->string('image_url')->nullable();
+            $table->text('image_url')->nullable();
             $table->unsignedBigInteger('source_id');
             $table->string('author')->nullable();
             $table->timestamp('published_at')->nullable();

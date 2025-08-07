@@ -8,14 +8,22 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      const res = await axios.post('http://localhost:8000/api/login', { email, password });
-      localStorage.setItem('token', res.data.token);
-      navigate('/feed');  // Redirect to feed page after login
-    } catch (err) {
-      alert('Login failed');
-    }
-  };
+  try {
+    const response = await axios.post('http://localhost:8000/api/login', {
+      email,
+      password,
+    });
+    const token = response.data.token;
+
+    // Save token locally (localStorage/sessionStorage)
+    localStorage.setItem('token', token);
+
+    // Redirect to protected page (e.g., feed)
+    navigate('/feed');
+  } catch (error) {
+    alert(error)
+  }
+};
 
   return (
     <div>

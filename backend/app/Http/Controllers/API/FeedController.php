@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Illuminate\Http\Request;
-use App\Models\Post;
 
 class FeedController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->take(20)->get();
+        $posts = Article::latest()->take(20)->get();
         return response()->json($posts);
     }
 }
